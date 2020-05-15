@@ -9,6 +9,7 @@
 
 require 'csv'
 
+
 WORK_FILE = Rails.root.join('db', 'works-seeds.csv')
 puts "Loading raw work data from #{WORK_FILE}"
 
@@ -40,7 +41,7 @@ user_failures = []
 CSV.foreach(USER_FILE, :headers => true) do |row|
   user = User.new
   user.name = row['name']
-  successful = work.save
+  successful = user.save
   if !successful
     work_failures << user
     puts "Failed to save user: #{user.inspect}"
