@@ -1,3 +1,17 @@
-<%@works.each do |work|%>
-  <%= work.title %> 
-<%end%>
+
+<div>
+  <h1>All Books </h1>
+  <%@works.where(category: "book").each do |work|%>
+  <p><%=work.title%> by <%=work.creator%></p>
+  <%end%>
+  <br>
+  <h1>All Album </h1>
+  <%@works.where(category: "album").each do |work|%>
+  <p><%=work.title%> by <%=work.creator%></p>
+  <%end%>
+  <br>
+  <h1>All Movies </h1>
+  <%@works.where(category: "movie").each do |work|%>
+  <p><%=work.title%> by <%=work.creator%></p>
+  <%end%>
+</div>
