@@ -28,6 +28,11 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.fine_by(id: params[:id])
+    if @work.nil?
+      head :not_found
+      return
+    end
   end
 
   def update
