@@ -28,7 +28,7 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.fine_by(id: params[:id])
+    @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
       return
@@ -36,6 +36,18 @@ class WorksController < ApplicationController
   end
 
   def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+      return
+    elsif @work.update(work_params)
+      redirect_to works_path 
+      return
+    else 
+      render :edit, status: :bad_request 
+      return
+    end
   end
 
   def destroy
