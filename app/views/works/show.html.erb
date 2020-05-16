@@ -8,7 +8,7 @@
   <strong>About:</strong> <%= @work.creator%>
   <br>
   <button> <%= link_to "Back to media ranks", works_path %></button>
-  <button> Edit</button>
+  <button> <%= link_to "Edit", edit_work_path %></button>
   <button> Upvote</button>
   <button> Delete</button>
 </div>
