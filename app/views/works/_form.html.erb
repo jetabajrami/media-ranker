@@ -2,7 +2,7 @@
 <p>Please provide the following information:</p>
   <div>
     <%= f.label :category%>
-    <%= f.text_field :category, options_for_select(["album", "book", "movie"]) %>
+    <%= f.select(:category, ["album", "book", "movie"])%>
   </div>
   <div>
     <%= f.label :title%>

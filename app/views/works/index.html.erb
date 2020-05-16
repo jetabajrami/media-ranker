@@ -1,17 +1,135 @@
-
 <div>
   <h1>All Books </h1>
-  <%@works.where(category: "book").each do |work|%>
-  <p><%=work.title%> by <%=work.creator%></p>
-  <%end%>
-  <br>
-  <h1>All Album </h1>
-  <%@works.where(category: "album").each do |work|%>
-  <p><%=work.title%> by <%=work.creator%></p>
-  <%end%>
-  <br>
-  <h1>All Movies </h1>
-  <%@works.where(category: "movie").each do |work|%>
-  <p><%=work.title%> by <%=work.creator%></p>
+  <%if @works.where(category: "book").count > 0 %>
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+      <tr>
+        <th scope="col"> Votes</th>
+        <th scope="col"> Title </th>
+        <th scope="col"> Created By</th>
+        <th scope="col"> Published</th>
+        <th scope="col"> Upvote</th>
+      </tr>
+ 
+      <%@works.where(category: "book").each do |work|%>
+        <tr>
+          <td> 0 </td>
+          <td><%=work.title%></td>
+          <td><%=work.creator%></td>
+          <td><%=work.publication_year%></td>
+          <td><button>Upvote</button></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <%else%>
+    <p>No works in this category</p>
+    <div class="table-wrapper-scroll-y">
+    <table class="table table-bordered table-striped mb-0">
+      <tr>
+        <th scope="col"> Votes</th>
+        <th scope="col"> Title </th>
+        <th scope="col"> Created By</th>
+        <th scope="col"> Published</th>
+        <th scope="col"> Upvote</th>
+      </tr>
+       <tr>
+          <td> 0 </td>
+          <td>---</td>
+          <td>---</td>
+          <td>---</td>
+          <td>---</td>
+        </tr>
   <%end%>
 </div>
+<br>
+<div>
+  <h1>All Album </h1>
+  <%if @works.where(category: "album").count > 0 %>
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+      <tr>
+        <th scope="col"> Votes</th>
+        <th scope="col"> Title </th>
+        <th scope="col"> Created By</th>
+        <th scope="col"> Published</th>
+        <th scope="col"> Upvote</th>
+      </tr>
+ 
+      <%@works.where(category: "album").each do |work|%>
+        <tr>
+          <td> 0 </td>
+          <td><%=work.title%></td>
+          <td><%=work.creator%></td>
+          <td><%=work.publication_year%></td>
+          <td><button>Upvote</button></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <%else%>
+    <p>No works in this category</p>
+    <div class="table-wrapper-scroll-y">
+    <table class="table table-bordered table-striped mb-0">
+      <tr>
+        <th scope="col"> Votes</th>
+        <th scope="col"> Title </th>
+        <th scope="col"> Created By</th>
+        <th scope="col"> Published</th>
+        <th scope="col"> Upvote</th>
+      </tr>
+       <tr>
+          <td> 0 </td>
+          <td>---</td>
+          <td>---</td>
+          <td>---</td>
+          <td>---</td>
+        </tr>
+  <%end%>
+</div>
+<br>
+<div>
+  <h1>All Movie </h1>
+  <%if @works.where(category: "movie").count > 0 %>
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+      <tr>
+        <th scope="col"> Votes</th>
+        <th scope="col"> Title </th>
+        <th scope="col"> Created By</th>
+        <th scope="col"> Published</th>
+        <th scope="col"> Upvote</th>
+      </tr>
+ 
+      <%@works.where(category: "movie").each do |work|%>
+        <tr>
+          <td> 0 </td>
+          <td><%=work.title%></td>
+          <td><%=work.creator%></td>
+          <td><%=work.publication_year%></td>
+          <td><button>Upvote</button></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <%else%>
+    <p>No works in this category</p>
+    <div class="table-wrapper-scroll-y">
+    <table class="table table-bordered table-striped mb-0">
+      <tr>
+        <th scope="col"> Votes</th>
+        <th scope="col"> Title </th>
+        <th scope="col"> Created By</th>
+        <th scope="col"> Published</th>
+        <th scope="col"> Upvote</th>
+      </tr>
+       <tr>
+          <td> 0 </td>
+          <td>---</td>
+          <td>---</td>
+          <td>---</td>
+          <td>---</td>
+        </tr>
+  <%end%>
+</div>
+
