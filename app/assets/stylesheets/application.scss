@@ -16,3 +16,24 @@
 @import "bootstrap";
 
 @import "**/*";
+
+body {
+  min-height: 100vh;
+  background-color: rgb(240, 239, 239);
+}
+
+
+// Tables 
+.my-custom-scrollbar {
+  position: relative;
+  height: 40vh;
+  overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+  border: solid  rgb(74, 121, 160) 0.5rem;
+}
+
+// Tables
+
