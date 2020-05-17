@@ -30,6 +30,11 @@
       </ul>
     </nav>
   </header>
+  <section>
+    <%flash.each do |name, message|%>
+      <div><%=message%></div>
+    <%end%>
+    </section>
   <body>
     <%= yield %>
   </body>

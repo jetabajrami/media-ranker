@@ -19,10 +19,12 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
+      flash[:success] = "#{@work.title.capitalize} was successfully added!"
       redirect_to work_path(@work.id)
       return
     else
-      redirect_to user_path(user_id)
+      flash.now[:error] = "#{@work.title.capitalize} was NOT successfully added!"
+      render :edit, status: :bad_request
       return
     end
   end
@@ -42,9 +44,11 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
+      flash[:success] = "#{@work.title.capitalize} was successfully updated!"
       redirect_to works_path 
       return
     else 
+      flash.now[:error] = "#{@work.title.capitalize} was NOT successfully updated!"
       render :edit, status: :bad_request 
       return
     end

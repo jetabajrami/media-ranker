@@ -17,5 +17,4 @@ class Work < ApplicationRecord
     works = Work.all
     return works.first
   end
-
 end
