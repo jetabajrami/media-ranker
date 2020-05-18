@@ -16,15 +16,27 @@ describe UsersController do
       
       expect(user).wont_be_nil
       expect(session[:user_id]).must_equal user.id
-      expect(user.name).must_equal user_hash[:user][:name]
+      expect(user.name).must_equal "Tina"
     end
 
     it "can log an existing user" do
-      user = User.create(name: "Flutura")
+      user = User.create(name: "Tina")
       expect{login(user.name)}.wont_change "User.count"
 
       expect(session[:user_id]).must_equal user.id
     end
   end
+
+  describe "loggout" do
+    it "can logout a loged in user" do
+      #Arrange
+      login()
+      expect(session[:user_id]).most_be_nil
+      post logout_path
+      expect(session[:user_id]).most_be_nil
+    end
+  end
+
+
 
 end
