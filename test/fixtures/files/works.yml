@@ -1,0 +1,34 @@
+work1:
+  category: album
+  title: Blue Breaker
+  creator: Dr. Sarai Langosh
+  publication_year: 1949
+  description: Et et expedita non aut quo.
+work2:
+  category: book
+  title: Joe Treat
+  creator: Blaise Lesch
+  publication_year: 1968
+  description: Voluptatem adipisci qui velit.
+work3:
+  category: album
+  title: Kreb-Full-o Been
+  creator: Ms. Trevion Buckridge
+  publication_year: 2016
+  description: Vero consectetur delectus consequatur id aut accusantium unde
+work4:
+  category: album
+  title: Wake-up Pie
+  creator: Timmy Streich I
+  publication_year: 1919
+  description: Voluptatem consequatur qui consectetur nisi officiis culpa.
+work5:
+  category: album
+  title: Blue Breaker
+  creator: Dr. Sarai Langosh
+  publication_year: 1949
+  description: Et et expedita non aut quo.
+
+
+
+
