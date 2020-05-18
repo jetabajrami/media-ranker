@@ -24,9 +24,18 @@
          <li class="nav-item app-header__nav_item">
         <a class="nav-link"><%= link_to "Add new work", new_work_path%></a>
         </li>
-         <li class="nav-item app-header__nav_item">
+        <li class="nav-item app-header__nav_item">
         <a class="nav-link"><%= link_to "View all users", users_path %></a>
         </li>
+        <%if @user.nil?%>
+         <li class="nav-item app-header__nav_item">
+         <a class="nav-link"><%= link_to "Logout", logout_path, method: :post %></a>
+         </li>
+        <%else%>
+         <li class="nav-item app-header__nav_item">
+         <a class="nav-link"><%= link_to "Log in", login_path%></a>
+         </li>
+        <%end%>
       </ul>
     </nav>
   </header>
