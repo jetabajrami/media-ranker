@@ -11,7 +11,11 @@
         <li>
          <a><%=work.title%></a>
          <small>by <%=work.creator%> </small>
-         <p>votes</p>
+         <%if Work.count_vote(work.id) > 1 %>
+         <p><%=Work.count_vote(work.id)%> votes</p>
+         <%else%>
+         <p><%=Work.count_vote(work.id)%> vote</p>
+         <%end%>
         </li>
      </ul>
    <%end%>
@@ -23,7 +27,11 @@
         <li>
          <a><%=work.title%></a>
          <small>by <%=work.creator%> </small>
-         <p>votes</p>
+         <%if Work.count_vote(work.id) > 1 %>
+         <p><%=Work.count_vote(work.id)%> votes</p>
+         <%else%>
+         <p><%=Work.count_vote(work.id)%> vote</p>
+         <%end%>
         </li>
      </ul>
    <%end%>
@@ -36,7 +44,11 @@
         <li>
          <a><%=work.title%></a>
          <small>by <%=work.creator%> </small>
-         <p>votes</p>
+         <%if Work.count_vote(work.id) > 1 %>
+         <p><%=Work.count_vote(work.id)%> votes</p>
+         <%else%>
+         <p><%=Work.count_vote(work.id)%> vote</p>
+         <%end%>
         </li>
      </ul>
    <%end%>

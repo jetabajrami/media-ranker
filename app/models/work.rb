@@ -17,4 +17,11 @@ class Work < ApplicationRecord
     works = Work.all
     return works.first
   end
+  
+  def self.count_vote(work_id)
+    work = Work.find_by(id: work_id)
+    votes = Vote.all
+    votes_per_work = work.votes.count
+    return votes_per_work
+  end
 end
