@@ -27,13 +27,13 @@
         <li class="nav-item app-header__nav_item">
         <a class="nav-link"><%= link_to "View all users", users_path %></a>
         </li>
-        <%if @user.nil?%>
-         <li class="nav-item app-header__nav_item">
-         <a class="nav-link"><%= link_to "Logout", logout_path, method: :post %></a>
-         </li>
-        <%else%>
+        <%if session[:user_id].nil?%>
          <li class="nav-item app-header__nav_item">
          <a class="nav-link"><%= link_to "Log in", login_path%></a>
+         </li>
+        <%else%>
+          <li class="nav-item app-header__nav_item">
+         <a class="nav-link"><%= link_to "Log out", logout_path, method: :post %></a>
          </li>
         <%end%>
       </ul>
