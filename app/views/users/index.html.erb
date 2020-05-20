@@ -1,6 +1,5 @@
 <main>
   <h2>List of Users</h2>
-
  <table class="table">
   <thead>
     <tr>
@@ -9,18 +8,16 @@
       <th>Joined</th>
     </tr>
   </thead>
-  <%@users.each do |user| %>
+  <%@users.each do |user|%>
   <tbody>
       <tr>
-        <td><%= user.name%></td>
+        <td><%= link_to user.name, user_path(user.id)%></td>
         <td><%=user.votes.count%></td>
         <td><%=user.created_at.strftime("%m/%d/%Y")%></td>
       </tr>
   </tbody>
   <%end%>
  </table>
-
-
  <a class="btn btn-secondary",<%= link_to 'Back to Media List', root_path %>>
 </main>
 
