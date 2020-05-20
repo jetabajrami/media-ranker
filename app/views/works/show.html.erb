@@ -1,14 +1,32 @@
-<div>
-  <h1><%= @work.title %></h1>
-  <br>
-  <strong>Created by:</strong> <%= @work.creator%>
-  <br>
-  <strong>Published:</strong> <%= @work.creator%>
-  <br>
-  <strong>About:</strong> <%= @work.creator%>
-  <br>
-  <button> <%= link_to "Back to media ranks", works_path %></button>
-  <button> <%= link_to "Edit", edit_work_path(@work.id) %></button>
-  <button> <%= link_to "Upvote", upvote_path(@work.id) %></button>
-  <button><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete work: #{@work.title}?"}%> </button>
-</div>
+<main>
+  <section>
+    <h2><%=@work.title%></h2>
+    <p>Created by: <%=@work.creator%></p>
+    <p>Published: <%=@work.publication_year%></p>
+    <p><%=@work.description%></p>
+    <section>
+      <a class="btn btn-primary" href="/">Back to media ranks</a>
+      <a class="btn btn-primary"<%= link_to "Edit", edit_work_path(@work.id)%>
+      <a class="btn btn-primary" <%= link_to "Upvote", upvote_path(@work.id) %> 
+      <a class="btn btn-danger" <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete work: #{@work.title}?"}%>
+    </section>
+ </section>
+   <br>
+  <section class="works-votes__container">
+    <h3 class="works-votes__header">17 Votes for this Album</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="/users/724">steve</a></td>
+          <td>May 19, 2020</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
