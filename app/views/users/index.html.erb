@@ -8,10 +8,10 @@
       <th>Joined</th>
     </tr>
   </thead>
-  <%@users.each do |user| %>
+  <%@users.each do |user|%>
   <tbody>
       <tr>
-        <td><%= user.name%></td>
+        <td><%= link_to user.name, user_path(user.id)%></td>
         <td><%=user.votes.count%></td>
         <td><%=user.created_at.strftime("%m/%d/%Y")%></td>
       </tr>
