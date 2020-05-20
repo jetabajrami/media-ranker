@@ -15,13 +15,15 @@
         </tr>
       </thead>
       <tbody>
-          <tr>
-            <td><a><%= link_to Work.last.title, work_path(Work.last.id) %></a></td>
-            <td>Alice Wu</td>
-            <td>2020</td>
-            <td>Movie</td>
-            <td>May 13, 2020</td>
-          </tr>
+      <%@user.votes.each do |vote|%>
+           <tr>
+          <td><%= link_to Work.find_by(id: vote.work_id).title, work_path(vote.work_id) %></td>
+          <td><%= Work.find_by(id: vote.work_id).creator%></td>
+          <td><%= Work.find_by(id: vote.work_id).publication_year %></td>
+          <td><%= Work.find_by(id: vote.work_id).category %></td>
+          <td><%= vote.created_at.strftime("%m/%d/%Y") %></td>
+        </tr>
+        <%end%>
       </tbody>
     </table>
   </section>
