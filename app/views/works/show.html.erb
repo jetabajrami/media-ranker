@@ -13,7 +13,7 @@
  </section>
    <br>
   <section class="works-votes__container">
-    <h3 class="works-votes__header">17 Votes for this Album</h3>
+    <h3 class="works-votes__header"><%=@work.votes.count%> Votes for this <%=@work.category%></h3>
     <table class="table">
       <thead>
         <tr>
@@ -22,10 +22,12 @@
         </tr>
       </thead>
       <tbody>
+      <%@work.votes.each do |vote|%>
         <tr>
-          <td><a href="/users/724">steve</a></td>
-          <td>May 19, 2020</td>
+          <td><%= link_to User.find_by(id: vote.user_id).name, user_path(vote.user_id) %></td>
+          <td><%= vote.created_at.strftime("%m/%d/%Y")%></td>
         </tr>
+      <%end%>
       </tbody>
     </table>
   </section>
