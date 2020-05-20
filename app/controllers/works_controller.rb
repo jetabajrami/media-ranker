@@ -60,10 +60,19 @@ class WorksController < ApplicationController
     if @work.nil?
       head :not_found
       return
+    elsif
+      @vote = Vote.where(work_id: @work.id).count > 0
+      @vote = Vote.where(work_id: @work.id).delete_all
+      @work.destroy
+      flash[:success] = "#{@work.title.capitalize} was successfully deleted!"
+      redirect_to works_path
+      return
+    else 
+      @work.delete
+      flash[:success] = "#{@work.title.capitalize} was successfully deleted!"
+      redirect_to works_path
+      return
     end
-    @work.delete
-    redirect_to works_path
-    return
   end
 
   def upvote
