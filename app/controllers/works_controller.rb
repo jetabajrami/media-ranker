@@ -4,6 +4,7 @@ class WorksController < ApplicationController
    @works = Work.all
   end
 
+
   def show
     @work = Work.find_by(id: params[:id])
     if @work.nil?
@@ -60,7 +61,7 @@ class WorksController < ApplicationController
       head :not_found
       return
     end
-    @work.destroy
+    @work.delete
     redirect_to works_path
     return
   end
