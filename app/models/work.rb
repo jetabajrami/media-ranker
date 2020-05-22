@@ -9,8 +9,10 @@ class Work < ApplicationRecord
   validates :description, presence: true
 
   def self.top_ten(category)
-    works = Work.where(category: category)
-    return works.limit(10)
+    works = Work.where(category: category).max_by(10) do |work|
+      work.votes.count
+    end
+    return works
   end
 
   def self.spot_light
