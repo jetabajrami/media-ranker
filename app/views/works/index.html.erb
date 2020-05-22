@@ -1,5 +1,6 @@
 <main>
   <h2>List of Works</h2>
+  <br>
   <section class="media-table">
     <h4>Albums</h4>
     <% if @works.where(category: "album").size > 0 %>
@@ -9,8 +10,8 @@
           <th width=80>Votes</th>
           <th>Title</th>
           <th>Created By</th>
-          <th width=100>Published</th>
-          <th width=100>Upvote</th>
+          <th width=80>Published</th>
+          <th width=80>Upvote</th>
         </tr>
       </thead>
       <tbody>
@@ -20,7 +21,7 @@
             <td><a><%= link_to work.title, work_path(work.id) %></a></td>
             <td><%=work.creator%></td>
             <td><%=work.publication_year%></td>
-            <td><%= link_to "Upvote", upvote_path(work.id)%></td>
+            <td><%=link_to "Upvote", upvote_path(work.id), :class => "btn btn-primary"%></td>
           </tr>
          <%end%>
       </tbody>
@@ -33,8 +34,8 @@
             <th width=80>Votes</th>
             <th>Title</th>
             <th>Created By</th>
-            <th width=100>Published</th>
-            <th width=100>Upvote</th>
+            <th width=80>Published</th>
+            <th width=80>Upvote</th>
           </tr>
         </thead>
       <tbody>
@@ -59,8 +60,8 @@
           <th width=80>Votes</th>
           <th>Title</th>
           <th>Created By</th>
-          <th width=100>Published</th>
-          <th width=100>Upvote</th>
+          <th width=80>Published</th>
+          <th width=80>Upvote</th>
         </tr>
       </thead>
       <tbody>
@@ -70,7 +71,7 @@
             <td><a><%= link_to work.title, work_path(work.id) %></a></td>
             <td><%=work.creator%></td>
             <td><%=work.publication_year%></td>
-            <td><%= link_to "Upvote", upvote_path(work.id)%></td>
+            <td><%=link_to "Upvote", upvote_path(work.id), :class => "btn btn-primary"%></td>
           </tr>
         <%end%>
       </tbody>
@@ -83,8 +84,8 @@
           <th width=80>Votes</th>
           <th>Title</th>
           <th>Created By</th>
-          <th width=100>Published</th>
-          <th width=100>Upvote</th>
+          <th width=80>Published</th>
+          <th width=80>Upvote</th>
         </tr>
       </thead>
       <tbody>
@@ -109,8 +110,8 @@
           <th width=80>Votes</th>
           <th>Title</th>
           <th>Created By</th>
-          <th width=100>Published</th>
-          <th width=100>Upvote</th>
+          <th width=80>Published</th>
+          <th width=80>Upvote</th>
         </tr>
       </thead>
       <tbody>
@@ -120,7 +121,7 @@
             <td><a><%= link_to work.title, work_path(work.id) %></a></td>
             <td><%=work.creator%></td>
             <td><%=work.publication_year%></td>
-            <td><%=link_to "Upvote", upvote_path(work.id)%></td>
+            <td><%=link_to "Upvote", upvote_path(work.id), :class => "btn btn-primary"%></td>
           </tr>
         <%end%>
       </tbody>
@@ -133,8 +134,8 @@
           <th width=80>Votes</th>
           <th>Title</th>
           <th>Created By</th>
-          <th width=100>Published</th>
-          <th width=100>Upvote</th>
+          <th width=80>Published</th>
+          <th width=80>Upvote</th>
         </tr>
       </thead>
       <tbody>
@@ -152,5 +153,4 @@
 
   <a class="btn btn-secondary" href="/">View top media</a>
   <a class="btn btn-primary" href="/works/new">Add a new work</a>
-
 </main>
