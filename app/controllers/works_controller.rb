@@ -20,11 +20,11 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      flash[:success] = "#{@work.title.capitalize} was successfully added!"
+      flash[:success] = "#{@work.title.capitalize} Was successfully added!"
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:error] = "#{@work.title.capitalize} was NOT successfully added!"
+      flash.now[:error] = "#{@work.title.capitalize} Was NOT successfully added!"
       render :edit, status: :bad_request
       return
     end
@@ -45,11 +45,11 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
-      flash[:success] = "#{@work.title.capitalize} was successfully updated!"
+      flash[:success] = "#{@work.title.capitalize} Was successfully updated!"
       redirect_to works_path 
       return
     else 
-      flash.now[:error] = "#{@work.title.capitalize} was NOT successfully updated!"
+      flash.now[:error] = "#{@work.title.capitalize} Was NOT successfully updated!"
       render :edit, status: :bad_request 
       return
     end
@@ -64,12 +64,12 @@ class WorksController < ApplicationController
       @vote = Vote.where(work_id: @work.id).count > 0
       @vote = Vote.where(work_id: @work.id).delete_all
       @work.destroy
-      flash[:success] = "#{@work.title.capitalize} was successfully deleted!"
+      flash[:success] = "#{@work.title.capitalize} Was successfully deleted!"
       redirect_to works_path
       return
     else 
       @work.delete
-      flash[:success] = "#{@work.title.capitalize} was successfully deleted!"
+      flash[:success] = "#{@work.title.capitalize} Was successfully deleted!"
       redirect_to works_path
       return
     end
