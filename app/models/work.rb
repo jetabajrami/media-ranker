@@ -15,11 +15,20 @@ class Work < ApplicationRecord
     return works
   end
 
-  def self.spot_light
-    works = Work.all
-    return works.first
+  def self.work_with_max_vote
+    work = Work.all.max_by do |work|
+      work.votes.count
+    end
+    return work
   end
   
+  def self.category_sort(category)
+    works = Work.where(category: category).sort_by do |work|
+      work.votes.count
+    end
+    return works.reverse
+  end
+
   def self.count_vote(work_id)
     work = Work.find_by(id: work_id)
     votes = Vote.all

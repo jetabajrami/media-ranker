@@ -2,7 +2,7 @@
   <h2>List of Works</h2>
   <section class="media-table">
     <h4>Albums</h4>
-    <%if @works.where(category: "album").count > 0 %>
+    <% if @works.where(category: "album").size > 0 %>
     <table class="table">
       <thead>
         <tr>
@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <%@works.where(category: "album").each do |work|%>
+         <%Work.category_sort("album").each do |work|%>
           <tr>
             <td><%=Work.count_vote(work.id)%></td>
             <td><a><%= link_to work.title, work_path(work.id) %></a></td>
@@ -38,7 +38,6 @@
           </tr>
         </thead>
       <tbody>
-      <%@works.where(category: "album").each do |work|%>
           <tr>
             <td>---</td>
             <td>---</td>
@@ -46,7 +45,6 @@
             <td>---</td>
             <td>---</td>
           </tr>
-      <%end%>
       </tbody>
     </table>
     <%end%>
@@ -54,7 +52,7 @@
 
   <section class="media-table">
     <h4>Books</h4>
-    <%if @works.where(category: "book").count > 0 %>
+    <% if @works.where(category: "book").size > 0 %>
     <table class="table">
       <thead>
         <tr>
@@ -66,7 +64,7 @@
         </tr>
       </thead>
       <tbody>
-      <%@works.where(category: "book").each do |work|%>
+      <% Work.category_sort("book").each do |work|%>
           <tr>
             <td><%=Work.count_vote(work.id)%></td>
             <td><a><%= link_to work.title, work_path(work.id) %></a></td>
@@ -90,7 +88,6 @@
         </tr>
       </thead>
       <tbody>
-      <%@works.where(category: "book").each do |work|%>
           <tr>
             <td>---</td>
             <td>---</td>
@@ -98,7 +95,6 @@
             <td>---</td>
             <td>---</td>
           </tr>
-      <%end%>
       </tbody>
     </table>
     <%end%>
@@ -106,7 +102,7 @@
 
   <section class="media-table">
     <h4>Movies</h4>
-    <%if @works.where(category: "movie").count > 0 %>
+    <% if @works.where(category: "movie").size > 0 %>
     <table class="table">
       <thead>
         <tr>
@@ -118,7 +114,7 @@
         </tr>
       </thead>
       <tbody>
-      <%@works.where(category: "movie").each do |work|%>
+      <%Work.category_sort("movie").each do |work|%>
           <tr>
             <td><%=Work.count_vote(work.id)%></td>
             <td><a><%= link_to work.title, work_path(work.id) %></a></td>
@@ -142,7 +138,6 @@
         </tr>
       </thead>
       <tbody>
-      <%@works.where(category: "movie").each do |work|%>
           <tr>
             <td>---</td>
             <td>---</td>
@@ -150,7 +145,6 @@
             <td>---</td>
             <td>---</td>
           </tr>
-      <%end%>
       </tbody>
     </table>
     <%end%>
