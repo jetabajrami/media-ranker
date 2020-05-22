@@ -22,6 +22,13 @@ class Work < ApplicationRecord
     return work
   end
   
+  def self.category_sort(category)
+    works = Work.where(category: category).sort_by do |work|
+      work.votes.count
+    end
+    return works.reverse
+  end
+
   def self.count_vote(work_id)
     work = Work.find_by(id: work_id)
     votes = Vote.all
