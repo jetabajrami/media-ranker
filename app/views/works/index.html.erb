@@ -1,135 +1,156 @@
-<div>
-  <h1>All Books </h1>
-  <%if @works.where(category: "book").count > 0 %>
-  <div class="table-wrapper-scroll-y my-custom-scrollbar">
-    <table class="table table-bordered table-striped mb-0">
-      <tr>
-        <th scope="col"> Votes</th>
-        <th scope="col"> Title </th>
-        <th scope="col"> Created By</th>
-        <th scope="col"> Published</th>
-        <th scope="col"> Upvote</th>
-      </tr>
- 
-      <%@works.where(category: "book").each do |work|%>
+<main>
+  <h2>List of Works</h2>
+  <br>
+  <section class="media-table">
+    <h4>Albums</h4>
+    <% if @works.where(category: "album").size > 0 %>
+    <table class="table">
+      <thead>
         <tr>
-          <td> 0 </td>
-          <td><%= link_to work.title, work_path(work.id) %></td>
-          <td><%=work.creator%></td>
-          <td><%=work.publication_year%></td>
-          <td><button>Upvote</button></td>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=80>Published</th>
+          <th width=80>Upvote</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+         <%Work.category_sort("album").each do |work|%>
+          <tr>
+            <td><%=Work.count_vote(work.id)%></td>
+            <td><a><%= link_to work.title, work_path(work.id) %></a></td>
+            <td><%=work.creator%></td>
+            <td><%=work.publication_year%></td>
+            <td><%=link_to "Upvote", upvote_path(work.id), :class => "btn btn-primary"%></td>
+          </tr>
+         <%end%>
+      </tbody>
     </table>
-  </div>
-  <%else%>
-    <p>No works in this category</p>
-    <div class="table-wrapper-scroll-y">
-    <table class="table table-bordered table-striped mb-0">
-      <tr>
-        <th scope="col"> Votes</th>
-        <th scope="col"> Title </th>
-        <th scope="col"> Created By</th>
-        <th scope="col"> Published</th>
-        <th scope="col"> Upvote</th>
-      </tr>
-       <tr>
-          <td>---</td>
-          <td>---</td>
-          <td>---</td>
-          <td>---</td>
-          <td>---</td>
-        </tr>
-  <%end%>
-</div>
-<br>
-<div>
-  <h1>All Album </h1>
-  <%if @works.where(category: "album").count > 0 %>
-  <div class="table-wrapper-scroll-y my-custom-scrollbar">
-    <table class="table table-bordered table-striped mb-0">
-      <tr>
-        <th scope="col"> Votes</th>
-        <th scope="col"> Title </th>
-        <th scope="col"> Created By</th>
-        <th scope="col"> Published</th>
-        <th scope="col"> Upvote</th>
-      </tr>
- 
-      <%@works.where(category: "album").each do |work|%>
-        <tr>
-          <td> 0 </td>
-          <td><%= link_to work.title, work_path(work.id) %></td>
-          <td><%=work.creator%></td>
-          <td><%=work.publication_year%></td>
-          <td><button>Upvote</button></td>
-        </tr>
-      <% end %>
+    <%else%>
+      <p>No works in this category</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width=80>Votes</th>
+            <th>Title</th>
+            <th>Created By</th>
+            <th width=80>Published</th>
+            <th width=80>Upvote</th>
+          </tr>
+        </thead>
+      <tbody>
+          <tr>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+          </tr>
+      </tbody>
     </table>
-  </div>
-  <%else%>
-    <p>No works in this category</p>
-    <div class="table-wrapper-scroll-y">
-    <table class="table table-bordered table-striped mb-0">
-      <tr>
-        <th scope="col"> Votes</th>
-        <th scope="col"> Title </th>
-        <th scope="col"> Created By</th>
-        <th scope="col"> Published</th>
-        <th scope="col"> Upvote</th>
-      </tr>
-       <tr>
-          <td> 0 </td>
-          <td>---</td>
-          <td>---</td>
-          <td>---</td>
-          <td>---</td>
-        </tr>
-  <%end%>
-</div>
-<br>
-<div>
-  <h1>All Movie </h1>
-  <%if @works.where(category: "movie").count > 0 %>
-  <div class="table-wrapper-scroll-y my-custom-scrollbar">
-    <table class="table table-bordered table-striped mb-0">
-      <tr>
-        <th scope="col"> Votes</th>
-        <th scope="col"> Title </th>
-        <th scope="col"> Created By</th>
-        <th scope="col"> Published</th>
-        <th scope="col"> Upvote</th>
-      </tr>
- 
-      <%@works.where(category: "movie").each do |work|%>
-        <tr>
-          <td> 0 </td>
-          <td><%= link_to work.title, work_path(work.id) %></td>
-          <td><%=work.creator%></td>
-          <td><%=work.publication_year%></td>
-          <td><button>Upvote</button></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-  <%else%>
-    <p>No works in this category</p>
-    <div class="table-wrapper-scroll-y">
-    <table class="table table-bordered table-striped mb-0">
-      <tr>
-        <th scope="col"> Votes</th>
-        <th scope="col"> Title </th>
-        <th scope="col"> Created By</th>
-        <th scope="col"> Published</th>
-        <th scope="col"> Upvote</th>
-      </tr>
-       <tr>
-          <td> 0 </td>
-          <td>---</td>
-          <td>---</td>
-          <td>---</td>
-          <td>---</td>
-        </tr>
-  <%end%>
-</div>
+    <%end%>
+  </section>
 
+  <section class="media-table">
+    <h4>Books</h4>
+    <% if @works.where(category: "book").size > 0 %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=80>Published</th>
+          <th width=80>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% Work.category_sort("book").each do |work|%>
+          <tr>
+            <td><%=Work.count_vote(work.id)%></td>
+            <td><a><%= link_to work.title, work_path(work.id) %></a></td>
+            <td><%=work.creator%></td>
+            <td><%=work.publication_year%></td>
+            <td><%=link_to "Upvote", upvote_path(work.id), :class => "btn btn-primary"%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+    <%else%>
+      <p>No works in this category</p>
+       <table class="table">
+      <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=80>Published</th>
+          <th width=80>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+          </tr>
+      </tbody>
+    </table>
+    <%end%>
+  </section>
+
+  <section class="media-table">
+    <h4>Movies</h4>
+    <% if @works.where(category: "movie").size > 0 %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=80>Published</th>
+          <th width=80>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+      <%Work.category_sort("movie").each do |work|%>
+          <tr>
+            <td><%=Work.count_vote(work.id)%></td>
+            <td><a><%= link_to work.title, work_path(work.id) %></a></td>
+            <td><%=work.creator%></td>
+            <td><%=work.publication_year%></td>
+            <td><%=link_to "Upvote", upvote_path(work.id), :class => "btn btn-primary"%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+    <%else%>
+      <p>No works in this category</p>
+       <table class="table">
+      <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=80>Published</th>
+          <th width=80>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+          </tr>
+      </tbody>
+    </table>
+    <%end%>
+  </section>
+
+  <a class="btn btn-secondary" href="/">View top media</a>
+  <a class="btn btn-primary" href="/works/new">Add a new work</a>
+</main>
