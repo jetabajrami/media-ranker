@@ -3,9 +3,10 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
   #validation
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
+  validates :title, uniqueness: {scope: :category}
   validates :creator, presence: true
-  validates :publication_year, presence: true, length: {is: 4}, uniqueness: true
+  validates :publication_year, presence: true
   validates :description, presence: true
 
   def self.top_ten(category)
