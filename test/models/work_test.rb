@@ -126,12 +126,39 @@ describe Work do
       it "return the work that has max vote form three categorys" do
         top_work = works(:work1)
         top_voted_work = top_work.votes.count
-        expect(top_work).must_be_instance_of Array
         expect(Work.work_with_max_vote.votes.count).must_equal top_voted_work
         expect(Work.work_with_max_vote).must_be_instance_of Work
       end
     end
-    
+
+    describe "category_sort" do
+      describe "retuns all the works for each category respecting works that has max vote" do
+        it "it stor books category" do
+          all_books = Work.where(category: :book).count
+          expect(Work.category_sort(:book).length).must_equal all_books
+          Work.category_sort(:book).each do |work|
+            expect(work).must_be_instance_of Work
+          end
+        end
+
+        it "it stor movies category" do
+          all_movies = Work.where(category: :movie).count
+          expect(Work.category_sort(:movie).length).must_equal all_movies
+          Work.category_sort(:movie).each do |work|
+            expect(work).must_be_instance_of Work
+          end
+        end
+
+        it "it stor albums category" do
+          all_albums = Work.where(category: :album).count
+          expect(Work.category_sort(:album).length).must_equal all_albums
+          Work.category_sort(:album).each do |work|
+            expect(work).must_be_instance_of Work
+          end
+        end
+      end
+    end
+
   end
 end
 
