@@ -6,8 +6,8 @@ class Work < ApplicationRecord
   validates :title, presence: true
   validates :title, uniqueness: {scope: :category}
   validates :creator, presence: true
-  # validates :publication_year, presence: true, length: {is: 4}, uniqueness: true
-  # validates :description, presence: true
+  validates :publication_year, presence: true
+  validates :description, presence: true
 
   def self.top_ten(category)
     works = Work.where(category: category).max_by(10) do |work|

@@ -19,7 +19,6 @@ describe Work do
   end
 
   describe "validations" do
-
     it "it's invalid when work does't have title" do
       work = works(:work1)
       work.title = nil
@@ -59,19 +58,29 @@ describe Work do
       expect(@work.valid?).must_equal true
     end
 
-    # it "must have a publication_year and publication_year should be 4 char" do
-    #   new_work.publication_year = nil
-    #   expect(new_work.valid?).must_equal false
-    #   expect(new_work.errors.messages).must_include :publication_year
-    #   expect(new_work.errors.messages[:publication_year]).must_equal ["can't be blank", "is the wrong length (should be 4 characters)"]
-    # end
+    it "it's invalid when publication_year doesn't exist" do
+      @work.publication_year = nil
+      expect(@work.valid?).must_equal false
+      expect(@work.errors.messages).must_include :publication_year
+      expect(@work.errors.messages[:publication_year]).must_equal ["can't be blank"]
+    end
 
-    # it "must have a description" do
-    #   new_work.description = nil
-    #   expect(new_work.valid?).must_equal false
-    #   expect(new_work.errors.messages).must_include :description
-    #   expect(new_work.errors.messages[:description]).must_equal ["can't be blank"]
-    # end
+    it "it's valid when publication_year exist" do
+      @work.publication_year = !nil
+      expect(@work.valid?).must_equal true
+    end
+
+    it "it's invalid when description doesn't exist" do
+      @work.description = nil
+      expect(@work.valid?).must_equal false
+      expect(@work.errors.messages).must_include :description
+      expect(@work.errors.messages[:description]).must_equal ["can't be blank"]
+    end
+
+    it "it's valid when description  exist" do
+      @work.description = !nil
+      expect(@work.valid?).must_equal true
+    end
   end
 end
 
