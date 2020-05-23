@@ -3,6 +3,8 @@ require "test_helper"
 describe Work do
   before do
     @work = Work.new(title: "A Beautiful Mind", creator: "Akiva Goldsman", publication_year: "2001" , description: "American biographical drama film based on the life of the American mathematician John Nash.")
+    @lak = users(:lak)
+    @cathy = users(:cathy)
   end
 
   it "work can be instantiated" do
@@ -15,6 +17,30 @@ describe Work do
 
     [:category, :title, :creator, :publication_year, :description].each do |field|
       expect(work).must_respond_to field
+    end
+  end
+
+  describe "relations" do
+    it "work can have many votes" do
+      first_work = works(:work1)
+      Vote.create!(work_id: first_work.id, user_id: @lak.id)
+      Vote.create!(work_id: first_work.id, user_id: @cathy.id)
+      expect(first_work.votes.count).must_equal 2
+
+      expect {
+        Vote.create!(work_id: first_work.id, user_id: @cathy.id)
+      }.must_differ "first_work.votes.count", 1
+    end
+
+    it "work can have many users through votes" do
+      first_work = works(:work1)
+      Vote.create!(work_id: first_work.id, user_id: @lak.id)
+      Vote.create!(work_id: first_work.id, user_id: @cathy.id)
+
+      first_work.votes.each do |vote|
+        user = User.find_by(id: vote.user_id)
+        expect(user).must_be_instance_of User
+      end
     end
   end
 
@@ -158,7 +184,6 @@ describe Work do
         end
       end
     end
-
   end
 end
 
