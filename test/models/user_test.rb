@@ -4,6 +4,9 @@ describe User do
   before do
     @user = User.new(name: "Lak")
     @lak = users(:lak)
+    @work1 = works(:work1)
+    @work2 = works(:work2)
+    @work3 = works(:work3)
   end
 
   it "user can be instantiated" do
@@ -14,6 +17,27 @@ describe User do
   it "user will have the required field" do
     [:name].each do |field|
       expect(@lak).must_respond_to field
+    end
+  end
+
+  describe "relations" do
+    it "user can have many votes" do
+      expect {
+        Vote.create!(work_id: @work1.id, user_id: @lak.id)
+        Vote.create!(work_id: @work2.id, user_id: @lak.id)
+        Vote.create!(work_id: @work3.id, user_id: @lak.id)
+      }.must_differ "@lak.votes.count", 3
+    end
+
+    it "user can have many works through votes" do
+      Vote.create!(work_id: @work1.id, user_id: @lak.id)
+      Vote.create!(work_id: @work2.id, user_id: @lak.id)
+
+      vote_nr = 0
+      @lak.votes.each do |vote|
+        works = Work.find_by(id: vote.work_id)
+        expect(works).must_be_instance_of Work
+      end
     end
   end
 

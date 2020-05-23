@@ -23,13 +23,10 @@ describe Work do
   describe "relations" do
     it "work can have many votes" do
       first_work = works(:work1)
-      Vote.create!(work_id: first_work.id, user_id: @lak.id)
-      Vote.create!(work_id: first_work.id, user_id: @cathy.id)
-      expect(first_work.votes.count).must_equal 2
-
       expect {
+        Vote.create!(work_id: first_work.id, user_id: @lak.id)
         Vote.create!(work_id: first_work.id, user_id: @cathy.id)
-      }.must_differ "first_work.votes.count", 1
+      }.must_differ "first_work.votes.count", 2
     end
 
     it "work can have many users through votes" do
