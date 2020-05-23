@@ -82,6 +82,15 @@ describe Work do
       expect(@work.valid?).must_equal true
     end
   end
+
+  describe "custom methods" do
+    describe "top_ten method" do
+      it "will return an array of Works that have the top ten votes per category" do
+
+      end
+    end
+
+  end
 end
 
 
