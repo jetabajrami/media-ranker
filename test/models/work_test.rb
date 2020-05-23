@@ -121,12 +121,17 @@ describe Work do
         expect(Work.top_ten(:movie).last.votes.count).must_equal less_voted_work
       end
     end
-
-   
-
-   
-
-
+    
+    describe "work_with_max_vote method" do
+      it "return the work that has max vote form three categorys" do
+        top_work = works(:work1)
+        top_voted_work = top_work.votes.count
+        expect(top_work).must_be_instance_of Array
+        expect(Work.work_with_max_vote.votes.count).must_equal top_voted_work
+        expect(Work.work_with_max_vote).must_be_instance_of Work
+      end
+    end
+    
   end
 end
 
