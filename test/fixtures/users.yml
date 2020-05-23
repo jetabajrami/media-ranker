@@ -1,30 +1,6 @@
-vote1:
-  user: lak
-  work: work1
-vote2:
-  user: lak
-  work: work2
-vote3:
-  user: lak
-  work: work3
-vote4:
-  user: yieni
-  work: work4
-vote5:
-  user: cathy
-  work: work5
-vote6:
-  user: cathy
-  work: work6
-vote7:
-  user: lak
-  work: work7
-vote8:
-  user: lak
-  work: work8
-vote9:
-  user: lak
-  work: work9
-vote10:
-  user: lak
-  work: work10
+lak:
+  name: lak
+cathy:
+  name: cathy
+yieni:
+  name: yieni

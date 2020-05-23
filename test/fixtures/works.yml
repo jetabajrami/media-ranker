@@ -6,7 +6,7 @@ work1:
   description: Et et expedita non aut quo.
 work2:
   category: movie
-  title: Joe Treat
+  title: Alfa
   creator: Blaise Lesch
   publication_year: 1968
   description: Voluptatem adipisci qui velit.
@@ -55,6 +55,12 @@ work9:
 work10:
   category: movie
   title: Him
+  creator: Sarai Drly Jr
+  publication_year: 2011
+  description: Et et er fr expedita de non aut te quo.
+work11:
+  category: album
+  title: Somthing
   creator: Sarai Drly Jr
   publication_year: 2011
   description: Et et er fr expedita de non aut te quo.

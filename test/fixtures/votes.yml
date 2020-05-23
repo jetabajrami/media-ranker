@@ -1,6 +1,30 @@
-lak:
-  name: lak
-cathy:
-  name: cathy
-yieni:
-  name: yieni
+vote1:
+  user_id: lak
+  work_id: work1
+vote2:
+  user_id: lak
+  work_id: work2
+vote3:
+  user_id: lak
+  work_id: work3
+vote4:
+  user_id: yieni
+  work_id: work3
+vote5:
+  user_id: cathy
+  work_id: work1
+vote6:
+  user_id: cathy
+  work_id: work2
+vote7:
+  user_id: lak
+  work_id: work4
+vote8:
+  user_id: cathy
+  work_id: work1
+vote9:
+  user_id: cathy
+  work_id: work4
+vote10:
+  user_id: lak
+  work_id: work10

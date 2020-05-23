@@ -28,7 +28,7 @@ describe Work do
     end
 
     it "it's valid when work has title" do
-      work = works(:work1)
+      work = works(:work2)
       expect(work.valid?).must_equal true
     end
 
@@ -86,9 +86,46 @@ describe Work do
   describe "custom methods" do
     describe "top_ten method" do
       it "will return an array of Works that have the top ten votes per category" do
+        top_ten_movies = Work.top_ten(:movie)
+        expect(top_ten_movies).must_be_instance_of Array
+        expect(top_ten_movies.length).must_equal 10
 
+        top_ten_movies.each do |movie|
+          expect(movie).must_be_instance_of Work
+        end
+      end
+
+      it "if there are no work in category returns an empty array" do
+        top_books = Work.top_ten(:book)
+        expect(top_books).must_be_instance_of Array
+        expect(top_books.length).must_equal 0
+      end
+  
+      it "if it's less then 10 work return all those works" do
+        top_album = Work.top_ten(:album)
+        expect(top_album).must_be_instance_of Array
+        expect(top_album.length).must_equal 1
+      end
+  
+      it "returns the top ten where first work have the most votes" do
+        top_work = works(:work1)
+        top_voted_work = top_work.votes.count
+        expect(Work.top_ten(:movie).first).must_equal top_work
+        expect(Work.top_ten(:movie).first.votes.count).must_equal top_voted_work
+      end
+  
+      it "returns the top ten where last work that have less votes" do
+        less_work = works(:work10)
+        less_voted_work = less_work.votes.count
+        expect(Work.top_ten(:movie).last).must_equal less_work
+        expect(Work.top_ten(:movie).last.votes.count).must_equal less_voted_work
       end
     end
+
+   
+
+   
+
 
   end
 end
